@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cijfers</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>📊 Mijn Cijfers</h1>
+</header>
+
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="rooster.html">Rooster</a>
+    <a href="cijfers.html" class="active">Cijfers</a>
+    <a href="#">Afwezigheid</a>
+</nav>
+
+<main class="container">
+
+    <!-- Gemiddelde kaart -->
+    <div class="card">
+        <h2>📈 Gemiddelde</h2>
+        <p id="gemiddelde" class="big">-</p>
+    </div>
+
+    <!-- Cijferlijst -->
+    <div class="card">
+        <h2>📚 Vakcijfers</h2>
+
+        <table class="cijfer-table">
+            <thead>
+                <tr>
+                    <th>Vak</th>
+                    <th>Cijfer</th>
+                </tr>
+            </thead>
+            <tbody id="cijferLijst">
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+<footer>
+    SchoolPortaal © 2026
+</footer>
+
+<script>
+const cijfers = [
+    { vak: "Nederlands", cijfer: 7.8 },
+    { vak: "Wiskunde", cijfer: 6.5 },
+    { vak: "Biologie", cijfer: 8.2 },
+    { vak: "Engels", cijfer: 7.0 },
+    { vak: "Aardrijkskunde", cijfer: 6.8 }
+];
+
+// tabel vullen
+const tbody = document.getElementById("cijferLijst");
+
+cijfers.forEach(c => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${c.vak}</td>
+        <td>${c.cijfer}</td>
+    `;
+
+    tbody.appendChild(row);
+});
+
+// gemiddelde berekenen
+const totaal = cijfers.reduce((sum, c) => sum + c.cijfer, 0);
+const gemiddelde = (totaal / cijfers.length).toFixed(2);
+
+document.getElementById("gemiddelde").innerText = gemiddelde;
+</script>
+
+</body>
+</html>
