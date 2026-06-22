@@ -1,3 +1,7 @@
+/* =========================
+   RESET + BASIS
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -5,13 +9,16 @@
 }
 
 body{
-    font-family: "Segoe UI", Arial, sans-serif;
+    font-family:"Segoe UI", Arial, sans-serif;
     background:#0b1220;
     color:white;
     min-height:100vh;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
+
 header{
     background:linear-gradient(135deg,#1d4ed8,#2563eb);
     padding:20px;
@@ -22,13 +29,18 @@ header h1{
     font-size:2rem;
 }
 
-/* NAV */
+/* =========================
+   NAVIGATIE
+========================= */
+
 nav{
     display:flex;
     justify-content:center;
     gap:15px;
     padding:15px;
     background:#111827;
+    flex-wrap:wrap;
+    border-bottom:1px solid #1f2937;
 }
 
 nav a{
@@ -40,18 +52,29 @@ nav a{
     transition:.2s;
 }
 
-nav a:hover,
+nav a:hover{
+    background:#2563eb;
+    color:white;
+}
+
 nav a.active{
     background:#2563eb;
     color:white;
 }
 
-/* DASHBOARD */
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
     max-width:1200px;
     margin:auto;
     padding:25px;
 }
+
+/* =========================
+   CARDS (DASHBOARD)
+========================= */
 
 .cards{
     display:grid;
@@ -69,6 +92,7 @@ nav a.active{
 
 .card:hover{
     transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(37,99,235,0.3);
 }
 
 .card h2{
@@ -81,7 +105,10 @@ nav a.active{
     font-weight:bold;
 }
 
-/* ROOSTER */
+/* =========================
+   ROOSTER
+========================= */
+
 .rooster{
     display:grid;
     grid-template-columns:80px repeat(5,1fr);
@@ -96,6 +123,7 @@ nav a.active{
     padding:15px;
     text-align:center;
     font-weight:bold;
+    color:#e2e8f0;
 }
 
 .tijd{
@@ -103,64 +131,4 @@ nav a.active{
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#94a3b8;
-}
-
-.kolom{
-    position:relative;
-    border:1px solid #334155;
-    background:#0f172a;
-}
-
-/* LES */
-.les{
-    position:absolute;
-    left:4px;
-    right:4px;
-    border-radius:14px;
-    padding:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,.3);
-    transition:.2s;
-}
-
-.les:hover{
-    transform:scale(1.02);
-}
-
-.oranje{
-    background:linear-gradient(135deg,#b45309,#92400e);
-}
-
-.blauw{
-    background:linear-gradient(135deg,#2563eb,#1e40af);
-}
-
-.vak{
-    font-size:1.3rem;
-    font-weight:bold;
-}
-
-.lokaal{
-    margin-top:6px;
-    opacity:.9;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:20px;
-    color:#94a3b8;
-    margin-top:30px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    nav{
-        flex-wrap:wrap;
-    }
-
-    .rooster{
-        overflow-x:auto;
-        min-width:700px;
-    }
-}
+    color:#94a3
