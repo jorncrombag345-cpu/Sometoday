@@ -2,64 +2,56 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mijn Schoolportaal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SchoolPortaal</title>
 
-<style>
-body{
-font-family:Arial;
-margin:0;
-background:#f4f6f9;
-}
-
-header{
-background:#2563eb;
-color:white;
-padding:20px;
-text-align:center;
-}
-
-nav{
-display:flex;
-justify-content:center;
-gap:20px;
-background:white;
-padding:15px;
-}
-
-nav a{
-text-decoration:none;
-font-weight:bold;
-color:#333;
-}
-
-.card{
-background:white;
-max-width:800px;
-margin:20px auto;
-padding:20px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,.1);
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-<h1>Mijn Schoolportaal</h1>
+    <h1>📚 SchoolPortaal</h1>
 </header>
 
 <nav>
-<a href="index.html">Dashboard</a>
-<a href="rooster.html">Rooster</a>
-<a href="#">Afwezigheid</a>
-<a href="#">Cijfers</a>
+    <a href="index.html">Dashboard</a>
+    <a href="rooster.html">Rooster</a>
+    <a href="#">Afwezigheid</a>
+    <a href="#">Cijfers</a>
 </nav>
 
-<div class="card">
-<h2>Welkom</h2>
-<p>Klik op Rooster om je lessen te bekijken.</p>
+<div class="container">
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>📅 Volgende Les</h2>
+            <p>Nederlands</p>
+            <p>09:00 - G102</p>
+        </div>
+
+        <div class="card">
+            <h2>📊 Gemiddelde</h2>
+            <p>7,8</p>
+        </div>
+
+        <div class="card">
+            <h2>❌ Afwezigheid</h2>
+            <p>0 meldingen</p>
+        </div>
+
+        <div class="card">
+            <h2>📩 Berichten</h2>
+            <p>2 nieuwe berichten</p>
+        </div>
+
+    </div>
+
 </div>
+
+<footer>
+    SchoolPortaal © 2025
+</footer>
 
 </body>
 </html>
