@@ -1,81 +1,188 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijn Schoolportaal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Rooster</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f6f9;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-        header {
-            background: #2563eb;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+body{
+    background:#0f172a;
+    color:white;
+}
 
-        nav {
-            background: white;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+header{
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
+.rooster{
+    display:grid;
+    grid-template-columns:80px repeat(5,1fr);
+    min-height:700px;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-        }
+.kop{
+    background:#111827;
+    padding:15px;
+    text-align:center;
+    border:1px solid #374151;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-    </style>
+.tijd{
+    border:1px solid #374151;
+    padding-top:40px;
+    text-align:center;
+    color:#94a3b8;
+}
+
+.dag{
+    position:relative;
+    border:1px solid #374151;
+}
+
+.les{
+    position:absolute;
+    left:5px;
+    right:5px;
+    border-radius:12px;
+    padding:10px;
+    color:white;
+    overflow:hidden;
+}
+
+.oranje{
+    background:#7c3f15;
+}
+
+.blauw{
+    background:#1e3a5f;
+}
+
+.vak{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.lokaal{
+    margin-top:5px;
+    font-size:20px;
+}
+</style>
 </head>
 <body>
 
-<header>
-    <h1>Mijn Schoolportaal</h1>
-    <p>Rooster, afwezigheid en cijfers</p>
-</header>
+<header>Mijn Rooster</header>
 
-<nav>
-    <a href="#">Dashboard</a>
-    <a href="#">Rooster</a>
-    <a href="#">Afwezigheid</a>
-    <a href="#">Cijfers</a>
-</nav>
+<div class="rooster">
 
-<div class="container">
+<div class="kop"></div>
+<div class="kop">Ma</div>
+<div class="kop">Di</div>
+<div class="kop">Wo</div>
+<div class="kop">Do</div>
+<div class="kop">Vr</div>
 
-    <div class="card">
-        <h2>Welkom</h2>
-        <p>Welkom op je schoolportaal.</p>
-    </div>
-
-    <div class="card">
-        <h2>Volgende les</h2>
-        <p>Nederlands - 09:00</p>
-    </div>
+<div class="tijd">08:00</div>
+<div class="dag" id="ma"></div>
+<div class="dag" id="di"></div>
+<div class="dag" id="wo"></div>
+<div class="dag" id="do"></div>
+<div class="dag" id="vr"></div>
 
 </div>
+
+<script>
+
+const lessen = [
+
+{
+dag:"ma",
+vak:"NE",
+lokaal:"G102",
+start:9,
+eind:10,
+kleur:"oranje"
+},
+
+{
+dag:"ma",
+vak:"BI",
+lokaal:"B207",
+start:10,
+eind:11,
+kleur:"oranje"
+},
+
+{
+dag:"di",
+vak:"WI",
+lokaal:"F008",
+start:9,
+eind:10,
+kleur:"oranje"
+},
+
+{
+dag:"wo",
+vak:"FA",
+lokaal:"D106",
+start:9,
+eind:10,
+kleur:"blauw"
+},
+
+{
+dag:"do",
+vak:"BI",
+lokaal:"D009",
+start:9,
+eind:10,
+kleur:"blauw"
+},
+
+{
+dag:"vr",
+vak:"WI",
+lokaal:"D009",
+start:9,
+eind:10,
+kleur:"blauw"
+}
+
+];
+
+lessen.forEach(les => {
+
+const blok = document.createElement("div");
+
+blok.className = "les " + les.kleur;
+
+const top = (les.start - 8) * 100;
+const hoogte = (les.eind - les.start) * 100 - 5;
+
+blok.style.top = top + "px";
+blok.style.height = hoogte + "px";
+
+blok.innerHTML = `
+<div class="vak">${les.vak}</div>
+<div class="lokaal">${les.lokaal}</div>
+`;
+
+document.getElementById(les.dag).appendChild(blok);
+
+});
+
+</script>
 
 </body>
 </html>
