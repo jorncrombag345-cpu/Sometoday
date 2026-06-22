@@ -2,97 +2,39 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rooster</title>
 
-<style>
-body{
-margin:0;
-background:#0f172a;
-color:white;
-font-family:Arial;
-}
-
-.topbar{
-padding:20px;
-text-align:center;
-font-size:32px;
-font-weight:bold;
-background:#111827;
-}
-
-.week{
-display:grid;
-grid-template-columns:80px repeat(5,1fr);
-height:900px;
-}
-
-.dagnaam{
-padding:15px;
-text-align:center;
-border:1px solid #374151;
-background:#111827;
-font-weight:bold;
-}
-
-.tijd{
-border:1px solid #374151;
-padding-top:50px;
-text-align:center;
-color:#94a3b8;
-}
-
-.kolom{
-position:relative;
-border:1px solid #374151;
-}
-
-.les{
-position:absolute;
-left:4px;
-right:4px;
-border-radius:12px;
-padding:10px;
-}
-
-.oranje{
-background:#7c3f15;
-}
-
-.blauw{
-background:#16375d;
-}
-
-.vak{
-font-size:28px;
-font-weight:bold;
-}
-
-.lokaal{
-font-size:20px;
-margin-top:5px;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="topbar">Juni</div>
+<header>
+    <h1>📅 Mijn Rooster</h1>
+</header>
 
-<div class="week">
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="rooster.html">Rooster</a>
+    <a href="#">Afwezigheid</a>
+    <a href="#">Cijfers</a>
+</nav>
 
-<div class="dagnaam"></div>
-<div class="dagnaam">Ma</div>
-<div class="dagnaam">Di</div>
-<div class="dagnaam">Wo</div>
-<div class="dagnaam">Do</div>
-<div class="dagnaam">Vr</div>
+<div class="rooster">
 
-<div class="tijd">08:00</div>
-<div class="kolom" id="ma"></div>
-<div class="kolom" id="di"></div>
-<div class="kolom" id="wo"></div>
-<div class="kolom" id="do"></div>
-<div class="kolom" id="vr"></div>
+    <div class="dagnaam"></div>
+    <div class="dagnaam">Ma</div>
+    <div class="dagnaam">Di</div>
+    <div class="dagnaam">Wo</div>
+    <div class="dagnaam">Do</div>
+    <div class="dagnaam">Vr</div>
+
+    <div class="tijd">08:00</div>
+    <div class="kolom" id="ma"></div>
+    <div class="kolom" id="di"></div>
+    <div class="kolom" id="wo"></div>
+    <div class="kolom" id="do"></div>
+    <div class="kolom" id="vr"></div>
 
 </div>
 
@@ -100,42 +42,107 @@ margin-top:5px;
 
 const lessen = [
 
-{dag:"ma",vak:"SL",lokaal:"G104",start:80,eind:180,kleur:"oranje"},
-{dag:"ma",vak:"NE",lokaal:"G102",start:190,eind:290,kleur:"oranje"},
-{dag:"ma",vak:"BI",lokaal:"B207",start:300,eind:400,kleur:"oranje"},
-{dag:"ma",vak:"BSV",lokaal:"B105",start:520,eind:620,kleur:"oranje"},
+{
+dag:"ma",
+vak:"SL",
+lokaal:"G104",
+top:50,
+hoogte:90,
+kleur:"oranje"
+},
 
-{dag:"di",vak:"AK",lokaal:"B106",start:80,eind:180,kleur:"oranje"},
-{dag:"di",vak:"WI",lokaal:"F008",start:190,eind:290,kleur:"oranje"},
-{dag:"di",vak:"EN",lokaal:"H105",start:300,eind:400,kleur:"oranje"},
+{
+dag:"ma",
+vak:"NE",
+lokaal:"G102",
+top:150,
+hoogte:90,
+kleur:"oranje"
+},
 
-{dag:"wo",vak:"FA",lokaal:"D106",start:80,eind:210,kleur:"blauw"},
-{dag:"wo",vak:"LO",lokaal:"M002",start:310,eind:440,kleur:"blauw"},
+{
+dag:"ma",
+vak:"BI",
+lokaal:"B207",
+top:250,
+hoogte:90,
+kleur:"oranje"
+},
 
-{dag:"do",vak:"BI",lokaal:"D009",start:190,eind:340,kleur:"blauw"},
-{dag:"do",vak:"NE",lokaal:"D009",start:450,eind:600,kleur:"blauw"},
+{
+dag:"di",
+vak:"AK",
+lokaal:"B106",
+top:50,
+hoogte:90,
+kleur:"oranje"
+},
 
-{dag:"vr",vak:"WI",lokaal:"D009",start:190,eind:340,kleur:"blauw"}
+{
+dag:"di",
+vak:"WI",
+lokaal:"F008",
+top:150,
+hoogte:90,
+kleur:"oranje"
+},
+
+{
+dag:"wo",
+vak:"FA",
+lokaal:"D106",
+top:50,
+hoogte:110,
+kleur:"blauw"
+},
+
+{
+dag:"wo",
+vak:"LO",
+lokaal:"M002",
+top:260,
+hoogte:110,
+kleur:"blauw"
+},
+
+{
+dag:"do",
+vak:"BI",
+lokaal:"D009",
+top:150,
+hoogte:120,
+kleur:"blauw"
+},
+
+{
+dag:"vr",
+vak:"WI",
+lokaal:"D009",
+top:150,
+hoogte:120,
+kleur:"blauw"
+}
 
 ];
 
 lessen.forEach(les=>{
 
-let div=document.createElement("div");
+const element=document.createElement("div");
 
-div.className="les "+les.kleur;
+element.className="les "+les.kleur;
 
-div.style.top=les.start+"px";
-div.style.height=(les.eind-les.start)+"px";
+element.style.top=les.top+"px";
+element.style.height=les.hoogte+"px";
 
-div.innerHTML=`
+element.innerHTML=`
 <div class="vak">${les.vak}</div>
 <div class="lokaal">${les.lokaal}</div>
 `;
 
-document.getElementById(les.dag).appendChild(div);
+document.getElementById(les.dag).appendChild(element);
 
 });
+
 </script>
 
 </body>
