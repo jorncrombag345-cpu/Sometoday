@@ -1,0 +1,198 @@
+/* Algemene instellingen */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#0b1220;
+    color:white;
+    min-height:100vh;
+}
+
+/* Header */
+
+header{
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+    padding:20px;
+    text-align:center;
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+}
+
+header h1{
+    font-size:2rem;
+}
+
+/* Navigatie */
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+    background:#111827;
+    border-bottom:1px solid #1f2937;
+}
+
+nav a{
+    color:#cbd5e1;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:10px;
+    transition:.3s;
+    font-weight:600;
+}
+
+nav a:hover{
+    background:#2563eb;
+    color:white;
+}
+
+/* Dashboard kaarten */
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:25px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:16px;
+    padding:20px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.card h2{
+    margin-bottom:10px;
+    color:#60a5fa;
+}
+
+/* Rooster */
+
+.rooster{
+    display:grid;
+    grid-template-columns:80px repeat(5,1fr);
+    min-height:900px;
+    margin-top:20px;
+}
+
+.dagnaam{
+    background:#111827;
+    border:1px solid #334155;
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+    color:#e2e8f0;
+}
+
+.tijd{
+    border:1px solid #334155;
+    padding-top:50px;
+    text-align:center;
+    color:#94a3b8;
+}
+
+.kolom{
+    position:relative;
+    border:1px solid #334155;
+    background:#0f172a;
+}
+
+/* Les blokken */
+
+.les{
+    position:absolute;
+    left:4px;
+    right:4px;
+    border-radius:14px;
+    padding:12px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,.3);
+}
+
+.oranje{
+    background:linear-gradient(
+        135deg,
+        #b45309,
+        #92400e
+    );
+}
+
+.blauw{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1e40af
+    );
+}
+
+.groen{
+    background:linear-gradient(
+        135deg,
+        #16a34a,
+        #166534
+    );
+}
+
+.rood{
+    background:linear-gradient(
+        135deg,
+        #dc2626,
+        #991b1b
+    );
+}
+
+.vak{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+.lokaal{
+    margin-top:8px;
+    font-size:1rem;
+    opacity:.9;
+}
+
+/* Footer */
+
+footer{
+    margin-top:40px;
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
+}
+
+/* Mobiel */
+
+@media(max-width:768px){
+
+    nav{
+        flex-wrap:wrap;
+    }
+
+    .rooster{
+        overflow-x:auto;
+        min-width:700px;
+    }
+
+    .vak{
+        font-size:1.2rem;
+    }
+
+}
