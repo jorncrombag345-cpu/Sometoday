@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rooster</title>
-
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
@@ -15,21 +15,21 @@
 
 <nav>
     <a href="index.html">Dashboard</a>
-    <a href="rooster.html">Rooster</a>
+    <a href="rooster.html" class="active">Rooster</a>
     <a href="#">Afwezigheid</a>
     <a href="#">Cijfers</a>
 </nav>
 
 <div class="rooster">
 
-    <div class="dagnaam"></div>
+    <div class="dagnaam">Tijd</div>
     <div class="dagnaam">Ma</div>
     <div class="dagnaam">Di</div>
     <div class="dagnaam">Wo</div>
     <div class="dagnaam">Do</div>
     <div class="dagnaam">Vr</div>
 
-    <div class="tijd">08:00</div>
+    <div class="tijd">-</div>
     <div class="kolom" id="ma"></div>
     <div class="kolom" id="di"></div>
     <div class="kolom" id="wo"></div>
@@ -39,110 +39,35 @@
 </div>
 
 <script>
-
 const lessen = [
+    { dag:"ma", vak:"SL", lokaal:"G104", top:50, hoogte:90, kleur:"oranje" },
+    { dag:"ma", vak:"NE", lokaal:"G102", top:150, hoogte:90, kleur:"oranje" },
+    { dag:"ma", vak:"BI", lokaal:"B207", top:250, hoogte:90, kleur:"oranje" },
 
-{
-dag:"ma",
-vak:"SL",
-lokaal:"G104",
-top:50,
-hoogte:90,
-kleur:"oranje"
-},
+    { dag:"di", vak:"AK", lokaal:"B106", top:50, hoogte:90, kleur:"oranje" },
+    { dag:"di", vak:"WI", lokaal:"F008", top:150, hoogte:90, kleur:"oranje" },
 
-{
-dag:"ma",
-vak:"NE",
-lokaal:"G102",
-top:150,
-hoogte:90,
-kleur:"oranje"
-},
+    { dag:"wo", vak:"FA", lokaal:"D106", top:50, hoogte:110, kleur:"blauw" },
+    { dag:"wo", vak:"LO", lokaal:"M002", top:260, hoogte:110, kleur:"blauw" },
 
-{
-dag:"ma",
-vak:"BI",
-lokaal:"B207",
-top:250,
-hoogte:90,
-kleur:"oranje"
-},
-
-{
-dag:"di",
-vak:"AK",
-lokaal:"B106",
-top:50,
-hoogte:90,
-kleur:"oranje"
-},
-
-{
-dag:"di",
-vak:"WI",
-lokaal:"F008",
-top:150,
-hoogte:90,
-kleur:"oranje"
-},
-
-{
-dag:"wo",
-vak:"FA",
-lokaal:"D106",
-top:50,
-hoogte:110,
-kleur:"blauw"
-},
-
-{
-dag:"wo",
-vak:"LO",
-lokaal:"M002",
-top:260,
-hoogte:110,
-kleur:"blauw"
-},
-
-{
-dag:"do",
-vak:"BI",
-lokaal:"D009",
-top:150,
-hoogte:120,
-kleur:"blauw"
-},
-
-{
-dag:"vr",
-vak:"WI",
-lokaal:"D009",
-top:150,
-hoogte:120,
-kleur:"blauw"
-}
-
+    { dag:"do", vak:"BI", lokaal:"D009", top:150, hoogte:120, kleur:"blauw" },
+    { dag:"vr", vak:"WI", lokaal:"D009", top:150, hoogte:120, kleur:"blauw" }
 ];
 
-lessen.forEach(les=>{
+lessen.forEach(les => {
+    const el = document.createElement("div");
 
-const element=document.createElement("div");
+    el.classList.add("les", les.kleur);
+    el.style.top = les.top + "px";
+    el.style.height = les.hoogte + "px";
 
-element.className="les "+les.kleur;
+    el.innerHTML = `
+        <div class="vak">${les.vak}</div>
+        <div class="lokaal">${les.lokaal}</div>
+    `;
 
-element.style.top=les.top+"px";
-element.style.height=les.hoogte+"px";
-
-element.innerHTML=`
-<div class="vak">${les.vak}</div>
-<div class="lokaal">${les.lokaal}</div>
-`;
-
-document.getElementById(les.dag).appendChild(element);
-
+    document.getElementById(les.dag).appendChild(el);
 });
-
 </script>
 
 </body>
